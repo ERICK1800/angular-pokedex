@@ -1,1 +1,20 @@
-<p>pokedex works!</p>
+<div class="row pe-3 ps-3 mt-5">
+    <div class="col">
+        <button type="submit" class="btn btn-outline-dark btn-lg" (click)="anterior()">Anterior</button>
+    </div>
+    <div class="col">
+        <h3>N° {{this.img}}</h3>
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-outline-dark btn-lg" (click)="proximo()">Proximo</button>
+    </div>
+</div>
+<div class="row pe-3 ps-3 mt-5">
+    <div class="col">
+        <img [src]="pokemonF.imagem">
+    </div>
+</div>
+<div class="row pe-3 ps-3 mt-5">
+    <div class="col">
+    </div>
+</div>
