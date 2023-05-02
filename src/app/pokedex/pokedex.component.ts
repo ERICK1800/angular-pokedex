@@ -8,7 +8,7 @@ import { PokeF } from './PokeF';
 })
 export class PokedexComponent {
   id: number  = 1;
-  img: string = "";
+  img: string = "001";
   
   pokemonF : PokeF = {
     "imagem" : "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
@@ -20,8 +20,11 @@ export class PokedexComponent {
       this.img = "00"+this.id;
     }else if(this.id < 100){
       this.img = "0"+this.id;
-    }else{
+    }else if(this.id < 1009){
       this.img = this.id.toString();
+    }else{
+      this.id = 1;
+      this.img = "00"+this.id;
     }
     this.pokemonF.imagem="https://assets.pokemon.com/assets/cms2/img/pokedex/full/"+this.img+".png"
   }
@@ -29,17 +32,14 @@ export class PokedexComponent {
   anterior(){
     this.id--;
     if(this.id < 1){
-      this.id = 1;
-      this.img = "00"+this.id;
+      this.id = 1008;
+      this.img = this.id.toString();
     }else if(this.id < 10){
       this.img = "00"+this.id;
     }else if(this.id < 100){
       this.img = "0"+this.id;
     }else if(this.id < 1009){
       this.img = this.id.toString();
-    }else{
-      this.id = 1;
-      this.img = "00"+this.id;
     }
     this.pokemonF.imagem="https://assets.pokemon.com/assets/cms2/img/pokedex/full/"+this.img+".png"
   }
