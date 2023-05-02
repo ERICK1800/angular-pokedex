@@ -3,7 +3,7 @@
         <button type="submit" class="btn btn-outline-dark btn-lg" (click)="anterior()">Anterior</button>
     </div>
     <div class="col">
-        <h3>N° {{this.img}}</h3>
+        <h3>N° {{this.img}} {{this.pokemonD.name | titlecase}}</h3>
     </div>
     <div class="col">
         <button type="submit" class="btn btn-outline-dark btn-lg" (click)="proximo()">Proximo</button>
@@ -16,9 +16,9 @@
 </div>
 <div class="row pe-3 ps-3 pt-3 pb-3 me-5 ms-5 mb-3 mt-5 mx-auto rounded-4 bg-primary text-white">
     <div class="col">
-        <h3 class="text-start">Altura: m</h3>
+        <h3 class="text-start">Altura: {{(this.pokemonD.height)/10}} m</h3>
     </div>
     <div class="col">
-        <h3 class="text-start">Peso: Kg</h3>
+        <h3 class="text-start">Peso: {{(this.pokemonD.weight)/10}} Kg</h3>
     </div>
 </div>

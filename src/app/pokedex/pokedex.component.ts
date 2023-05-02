@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PokeService } from '../poke.service';
+import { PokeD } from './PokeD';
 import { PokeF } from './PokeF';
 
 @Component({
@@ -6,10 +8,26 @@ import { PokeF } from './PokeF';
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.css']
 })
-export class PokedexComponent {
+export class PokedexComponent implements OnInit{
   id: number  = 1;
   img: string = "001";
+
+  constructor(private pokeServece: PokeService){}
+
+  ngOnInit(): void {
+    this.LoadPoke();
+  }
+
+  LoadPoke(){
+    this.pokeServece.getPokemon(this.id).subscribe(
+      {
+        next: pokeD => this.pokemonD = pokeD
+      }
+    );
+  }
   
+  pokemonD : PokeD = {} as PokeD;
+
   pokemonF : PokeF = {
     "imagem" : "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
   } as PokeF;
@@ -27,6 +45,7 @@ export class PokedexComponent {
       this.img = "00"+this.id;
     }
     this.pokemonF.imagem="https://assets.pokemon.com/assets/cms2/img/pokedex/full/"+this.img+".png"
+    this.LoadPoke()
   }
 
   anterior(){
@@ -42,5 +61,6 @@ export class PokedexComponent {
       this.img = this.id.toString();
     }
     this.pokemonF.imagem="https://assets.pokemon.com/assets/cms2/img/pokedex/full/"+this.img+".png"
+    this.LoadPoke()
   }
 }
